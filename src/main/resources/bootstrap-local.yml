@@ -1,0 +1,21 @@
+spring:
+  cloud:
+    config:
+      label: develop
+      
+jwt:
+  secret: secretKey
+  token-url: 
+    validate: http://customer-service/validate/
+
+restaurant:
+  service:
+    search-url:
+      item: http://restaurant-service/item/{itemId}
+     
+logging:
+  pattern:
+    console: "%clr(%d{yy-MM-dd E HH:mm:ss.SSS}){blue} %clr(%-5p) %clr(${PID}){faint} %clr(---){faint} %clr([%8.15t]){cyan} %clr(%-40.40logger{0}){blue} %clr(:){red} %clr(%m){faint}%n"
+  level:
+    org.springframework: ERROR
+    com.eatza: DEBUG

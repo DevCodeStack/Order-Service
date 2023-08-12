@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: Order-Service
+  profiles:
+    active:
+    - local
+  cloud:
+    config:
+      fail-fast: true
+      uri:
+      - http://localhost:8080
+  
