@@ -20,8 +20,8 @@ import com.eatza.order.exception.OrderException;
 import com.eatza.order.model.Order;
 import com.eatza.order.service.orderservice.OrderService;
 
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.Authorization;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import lombok.extern.slf4j.Slf4j;
 
 @RestController
@@ -32,7 +32,8 @@ public class OrderController {
 	OrderService orderService;
 
 	@PostMapping("/order")
-	@ApiOperation(tags = "OrderController", value = "Place a new order", authorizations = {@Authorization(value = "Bearer")})
+	@SecurityRequirement(name = "BearerAuth")
+	@Operation(tags = "OrderController", description = "Place a new order")
 	public ResponseEntity<Order> placeOrder(@RequestBody OrderRequestDto orderRequestDto) throws OrderException {
 		log.debug("In place order method, calling the service");
 		Order order = orderService.placeOrder(orderRequestDto);
@@ -44,7 +45,8 @@ public class OrderController {
 	}
 	
 	@PutMapping("/order/cancel/{orderId}")
-	@ApiOperation(tags = "OrderController", value = "Cancel a order", authorizations = {@Authorization(value = "Bearer")})
+	@SecurityRequirement(name = "BearerAuth")
+	@Operation(tags = "OrderController", description = "Cancel a order")
 	public ResponseEntity<String> cancelOrder(@PathVariable Long orderId, @RequestParam Long customerId) throws OrderException {
 		log.debug("In cancel order method");
 		boolean result =orderService.cancelOrder(orderId, customerId);
@@ -60,7 +62,8 @@ public class OrderController {
 	}
 
 	@PutMapping("/order")
-	@ApiOperation(tags = "OrderController", value = "Update an order", authorizations = {@Authorization(value = "Bearer")})
+	@SecurityRequirement(name = "BearerAuth")
+	@Operation(tags = "OrderController", description = "Update an order")
 	public ResponseEntity<OrderUpdateResponseDto> updateOrder(@RequestBody OrderUpdateDto orderUpdateDto) throws OrderException {
 
 		log.debug(" In updateOrder method, calling service");
@@ -75,7 +78,8 @@ public class OrderController {
 	}
 
 	@GetMapping("/order/{orderId}")
-	@ApiOperation(tags = "OrderController", value = "Get order by id", authorizations = {@Authorization(value = "Bearer")})
+	@SecurityRequirement(name = "BearerAuth")
+	@Operation(tags = "OrderController", description = "Get order by order id")
 	public ResponseEntity<Order> getOrderById(@PathVariable Long orderId) throws OrderException {
 		log.debug("In get order by id method, calling service to get Order by ID");
 		Optional<Order> order = orderService.getOrderById(orderId);
@@ -92,7 +96,8 @@ public class OrderController {
 	}
 
 	@GetMapping("/order/value/{orderId}")
-	@ApiOperation(tags = "OrderController", value = "Get order amount by id", authorizations = {@Authorization(value = "Bearer")})
+	@SecurityRequirement(name = "BearerAuth")
+	@Operation(tags = "OrderController", description = "Get order amount by order id")
 	public ResponseEntity<Double> getOrderAmountByOrderId(@PathVariable Long orderId) throws OrderException{
 		log.debug("In get order value by id method, calling service to get Order value");
 		double price = orderService.getOrderAmountByOrderId(orderId);

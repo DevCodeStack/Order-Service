@@ -4,7 +4,6 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
-import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.context.annotation.Bean;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.web.client.RestTemplate;
@@ -14,7 +13,6 @@ import com.eatza.order.config.JwtFilter;
 import com.eatza.order.util.JwtTokenUtil;
 
 @SpringBootApplication
-@EnableEurekaClient
 @EnableScheduling
 @EnableWebMvc
 public class OrderingserviceApplication {
