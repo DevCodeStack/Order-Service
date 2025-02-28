@@ -11,10 +11,10 @@ import com.eatza.order.model.OrderedItem;
 
 public interface OrderedItemRepository extends JpaRepository<OrderedItem, Long> {
 	
-	@Query(value = "SELECT sum(price) FROM Ordered_Items WHERE order_id = ?1", nativeQuery = true)
+	@Query(value = "SELECT sum(price) FROM eatza.ordered_items WHERE order_id = ?1", nativeQuery = true)
 	Double findAmountByOrderId(Long orderId);
 	
-	@Query(value = "SELECT * FROM Ordered_Items WHERE order_id = ?1", nativeQuery = true)
+	@Query(value = "SELECT * FROM eatza.ordered_items WHERE order_id = ?1", nativeQuery = true)
 	List<OrderedItem> findByOrderId(Long orderId);
 	
 	@Transactional

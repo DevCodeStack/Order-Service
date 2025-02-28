@@ -17,7 +17,7 @@ import lombok.Setter;
 
 
 @Entity
-@Table(name="ordered_items")
+@Table(name="ordered_items", schema = "eatza")
 @Getter @Setter @NoArgsConstructor
 public class OrderedItem {
 

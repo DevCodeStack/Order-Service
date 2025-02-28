@@ -6,7 +6,7 @@ spring:
     - local
   cloud:
     config:
-      fail-fast: true
+      fail-fast: false
       uri:
       - http://localhost:8080
   
